@@ -1,22 +1,40 @@
+// variables
+
+const imageContainer = document.getElementById("img_container");
+const imageGallery = document.getElementById("slider_container");
+
+let gallery = [];
+let currentIndex = 0;
+
 // fetch pictures from unsplash using API
 
 async function search(queryParam) {
-    let response = await fetch(
-      `https://api.unsplash.com/search/photos?page=1&orientation=landscape&query=${queryParam}&client_id=ywoppbhOsnIKpTA0ekfrY_sjIkmImzjMj8TAj2o4jig`
-    );
-    let data = await response.json();
-  
-    if (data.results.length > 0) {
-      gallery = data.results.slice(0, 10);
-      showImage(currentIndex);
-    }
+  let response = await fetch(
+    `https://api.unsplash.com/search/photos?page=1&orientation=landscape&query=${queryParam}&client_id=ywoppbhOsnIKpTA0ekfrY_sjIkmImzjMj8TAj2o4jig`
+  );
+  let data = await response.json();
+
+  if (data.results.length > 0) {
+    gallery = data.results.slice(0, 10);
+    showImage(currentIndex);
   }
+}
+
+// display main image
+
+function showImage(index) {
+  const imageUrl = gallery[index].urls.regular; // regular image size
+  const altText = gallery[index].alt_description; // image description
+
+  imageContainer.innerHTML = `<img src="${imageUrl}" alt="${altText}">`;
+}
 
 // random image for loading page
 
 document.addEventListener("DOMContentLoaded", function () {
   const randomQuery = generateRandomQuery();
   search(randomQuery);
+  showTopGallery();
 });
 
 function generateRandomQuery() {
@@ -36,12 +54,31 @@ function generateRandomQuery() {
   return keywords[randomIndex];
 }
 
+// display top gallery
+
+// function showTopGallery() {
+//   imageGallery.innerHTML = "";
+
+//   for (let i = 0; i < gallery.length; i++) {
+//     const imageUrl = gallery[i].urls.thumb;
+//     const altText = gallery[i].alt_description;
+
+//     const imgElement = document.createElement("img");
+//     imgElement.src = imageUrl;
+//     imgElement.alt = altText;
+
+//     imgElement.addEventListener("click", function () {
+//       currentIndex = i;
+//       showImage(currentIndex);
+//     });
+
+//     imageGallery.appendChild(imgElement);
+//   }
+// }
+
 // search form
 
 const form = document.getElementById("form");
-const imageContainer = document.getElementById("img_container");
-
-let gallery = [];
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -49,20 +86,11 @@ form.addEventListener("submit", function (event) {
   search(query);
 });
 
-function showImage(index) {
-  const imageUrl = gallery[index].urls.regular; // regular image size
-  const altText = gallery[index].alt_description; // image description
-
-  imageContainer.innerHTML = `<img src="${imageUrl}" alt="${altText}">`;
-}
-
 // next and previous button, mouse click
 // works in circle
 
 const buttonNext = document.getElementById("next");
 const buttonPrevious = document.getElementById("previous");
-
-let currentIndex = 0;
 
 buttonNext.addEventListener("click", function () {
   currentIndex++;
@@ -102,10 +130,3 @@ document.addEventListener("keydown", function (event) {
     showImage(currentIndex);
   }
 });
-
-// TODO:
-//
-// - create top gallery - hide gallery with a button - change size of the button!
-// - load picture when first page loads !!!!
-// - for mobile fetch only vertical picture
-// - work more on layout - change buttons color and design ???
