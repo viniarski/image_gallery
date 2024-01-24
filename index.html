@@ -4,33 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <link rel="shortcut icon" href="./media/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="./media/favicon.ico" type="image/x-icon" />
     <script src="./app.js" defer></script>
     <title>Image Gallery</title>
   </head>
   <body>
     <div class="parent">
-      <div class="div1">
-        <!-- image container -->
-        <div id="img_container" class="img_container"></div>
-      </div>
+
+      <!-- main image container -->
+      <div class="div1" id="img_container"></div>
+
+      <!-- top images slider -->
       <div class="div2">
-        <!-- image slider -->
-        <div id="img_slider" class="img_slider"></div>
+        <button id="img_slider" class="nav_button img_slider">
+            <img src="./media/dots.png" alt="open and close images slider">
+        </button>
       </div>
+
       <!-- next / previous buttons -->
       <div class="div3">
-        <button class="nav_button previous">
-            <img src="./media/previous.png" alt="previus button">
+        <button id="previous" class="nav_button previous">
+          <img src="./media/previous.png" alt="previus button" />
         </button>
       </div>
+
       <div class="div4">
-        <button class="nav_button next">
-            <img src="./media/next.png" alt="next button">
+        <button id="next" class="nav_button next">
+          <img src="./media/next.png" alt="next button" />
         </button>
       </div>
+
+      <!-- search form -->
       <div class="div5">
-        <!-- search form -->
         <form id="form" class="form">
           <input
             type="text"
@@ -41,6 +46,7 @@
           <button type="submit" class="submit">search</button>
         </form>
       </div>
+
     </div>
   </body>
 </html>
