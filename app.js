@@ -24,8 +24,12 @@ async function search(queryParam) {
 }
 
 function showImage(index) {
-  imageContainer.innerHTML = `<img src="${gallery[index].urls.raw}" alt="Image">`;
-}
+    const imageUrl = gallery[index].urls.full;
+    const altText = gallery[index].alt_description;
+  
+    imageContainer.innerHTML = `<img src="${imageUrl}" alt="${altText}">`;
+  }
+  
 
 // next and previous button, works in circle
 
