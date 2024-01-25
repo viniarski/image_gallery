@@ -1,23 +1,20 @@
 // variables
 
 let imageContainer = document.getElementById("img_container");
-let galleryContainer = document.getElementById('gallery_container')
+let galleryContainer = document.getElementById("gallery_container");
 
 let gallery = [];
 let currentIndex = 0;
 
 // display top gallery
 
-
-function showTopGallery() {
-  // TODO: insert gallery on page
-}
-
-
-
-
-
-
+const createGallery = (gallery) => {
+  gallery.forEach(image => {
+    let imgElement = document.createElement('img');
+    imgElement.src = image.urls.thumb;
+    galleryContainer.appendChild(imgElement);
+  });
+};
 
 // fetch pictures from unsplash using API
 
@@ -28,18 +25,20 @@ async function search(queryParam) {
   let data = await response.json();
 
   if (data.results.length > 0) {
-    gallery = data.results
+    gallery = data.results;
     showImage(currentIndex);
+    createGallery(gallery);
   }
 }
 
 // random image for loading page
 // bunch of keywords so the first image is generated randomly from an array
 
+const randomImg = randomImage();
+
 document.addEventListener("DOMContentLoaded", function () {
-  const randomImg = randomImage();
   search(randomImg);
-  showTopGallery(randomImg);
+
 });
 
 function randomImage() {
@@ -80,7 +79,7 @@ form.addEventListener("submit", function (event) {
 });
 
 // variables and functions for next / previous button
-// works in circle - if it goes to the last image it starts from the begining 
+// works in circle - if it goes to the last image it starts from the begining
 
 const buttonNext = document.getElementById("next");
 const buttonPrevious = document.getElementById("previous");
@@ -124,5 +123,3 @@ document.addEventListener("keydown", function (event) {
     circleLeft();
   }
 });
-
-
