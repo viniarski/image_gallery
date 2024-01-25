@@ -10,14 +10,16 @@
   </head>
   <body>
     <div class="parent">
-
       <!-- main image container -->
       <div class="div1" id="img_container"></div>
 
       <!-- top images slider -->
-      <div class="div2" id="slider_container">
-        <button id="img_slider" class="nav_button img_slider">
-            <img src="./media/dots.png" alt="open and close images slider">
+      <div class="div2">
+
+        <div class="gallery_container"></div> <!-- TODO: insert gallery here -->
+
+        <button id="img_slider" class="nav_button img_slider"> <!-- TODO: event for button to hidde / open gallery -->
+          <img src="./media/dots.png" alt="open and close images slider" />
         </button>
       </div>
 
@@ -39,14 +41,13 @@
         <form id="form" class="form">
           <input
             type="text"
-            placeholder="search image"
+            placeholder="search for images"
             id="input"
             name="input"
           />
           <button type="submit" class="submit">search</button>
         </form>
       </div>
-
     </div>
   </body>
 </html>

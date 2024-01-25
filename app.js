@@ -1,10 +1,14 @@
 // variables
 
 const imageContainer = document.getElementById("img_container");
-const imageGallery = document.getElementById("slider_container");
 
 let gallery = [];
 let currentIndex = 0;
+
+// display top gallery
+
+function showTopGallery() {   // TODO: insert gallery on page
+}
 
 // fetch pictures from unsplash using API
 
@@ -20,21 +24,12 @@ async function search(queryParam) {
   }
 }
 
-// display main image
-
-function showImage(index) {
-  const imageUrl = gallery[index].urls.regular; // regular image size
-  const altText = gallery[index].alt_description; // image description
-
-  imageContainer.innerHTML = `<img src="${imageUrl}" alt="${altText}">`;
-}
-
 // random image for loading page
 
 document.addEventListener("DOMContentLoaded", function () {
   const randomQuery = generateRandomQuery();
   search(randomQuery);
-  showTopGallery();
+  showTopGallery(randomQuery);
 });
 
 function generateRandomQuery() {
@@ -54,27 +49,14 @@ function generateRandomQuery() {
   return keywords[randomIndex];
 }
 
-// display top gallery
+// display main image
 
-// function showTopGallery() {
-//   imageGallery.innerHTML = "";
+function showImage(index) {
+  const imageUrl = gallery[index].urls.regular; // regular image size
+  const altText = gallery[index].alt_description; // image description
 
-//   for (let i = 0; i < gallery.length; i++) {
-//     const imageUrl = gallery[i].urls.thumb;
-//     const altText = gallery[i].alt_description;
-
-//     const imgElement = document.createElement("img");
-//     imgElement.src = imageUrl;
-//     imgElement.alt = altText;
-
-//     imgElement.addEventListener("click", function () {
-//       currentIndex = i;
-//       showImage(currentIndex);
-//     });
-
-//     imageGallery.appendChild(imgElement);
-//   }
-// }
+  imageContainer.innerHTML = `<img src="${imageUrl}" alt="${altText}">`;
+}
 
 // search form
 
