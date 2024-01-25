@@ -16,6 +16,12 @@ const createGallery = (gallery) => {
   });
 };
 
+// TODO: click event - displays main image if clicked image in gallery
+// TODO: click event - hides and open gallery if clicked top nav button
+// TODO: gallery fits only 5 pictures
+// TODO: gallery slider
+// TODO: bonus - fetch only pictures of specific ratio that fits screen perfectly? What about diffrent displays? @media ???
+
 // fetch pictures from unsplash using API
 
 async function search(queryParam) {
@@ -38,7 +44,6 @@ const randomImg = randomImage();
 
 document.addEventListener("DOMContentLoaded", function () {
   search(randomImg);
-
 });
 
 function randomImage() {
@@ -76,6 +81,7 @@ form.addEventListener("submit", function (event) {
   event.preventDefault();
   let query = event.target.input.value;
   search(query);
+  galleryContainer.innerHTML = ''
 });
 
 // variables and functions for next / previous button
