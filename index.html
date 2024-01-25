@@ -16,8 +16,8 @@
       <!-- top images slider -->
       <div class="div2">
         <div id="gallery_container" class="gallery_container"></div>
-        <button id="hide_open" class="nav_button hide_open">
-          <img src="./media/dots.png" alt="open and close images slider" />
+        <button id="hide_open" class="nav_button hide_open" aria-label="Toggle images slider">
+          <img src="./media/dots.png" alt="Open and close images slider" />
         </button>
       </div>
 
@@ -28,19 +28,20 @@
           class="nav_button previous"
           aria-label="Previous image"
         >
-          <img src="./media/previous.png" alt="previus button" />
+          <img src="./media/previous.png" alt="Previous image button" />
         </button>
       </div>
 
       <div class="div4">
         <button id="next" class="nav_button next" aria-label="Next image">
-          <img src="./media/next.png" alt="next button" />
+          <img src="./media/next.png" alt="Next image button" />
         </button>
       </div>
 
       <!-- search form -->
       <div class="div5">
         <form id="form" class="form">
+          <label for="input" class="visually_hidden">Search for images</label>
           <input
             type="text"
             placeholder="search for images"
@@ -54,5 +55,6 @@
         </form>
       </div>
     </div>
+    <div id="announcer" aria-live="polite" class="visually_hidden"></div>
   </body>
 </html>

@@ -6,21 +6,38 @@ let galleryContainer = document.getElementById("gallery_container");
 let gallery = [];
 let currentIndex = 0;
 
-// display top gallery
+// display top gallery and change picture when clicked
 
 const createGallery = (gallery) => {
-  gallery.forEach(image => {
+  galleryContainer.innerHTML = '';
+
+  gallery.forEach((image, index) => {
     let imgElement = document.createElement('img');
     imgElement.src = image.urls.thumb;
+    imgElement.alt = image.alt_description;
+
+    imgElement.addEventListener('click', () => {
+      currentIndex = index;
+      showImage(currentIndex);
+    });
+
     galleryContainer.appendChild(imgElement);
   });
 };
 
-// TODO: click event - displays main image if clicked image in gallery
-// TODO: click event - hides and open gallery if clicked top nav button
-// TODO: gallery fits only 5 pictures
-// TODO: gallery slider
-// TODO: bonus - fetch only pictures of specific ratio that fits screen perfectly? What about diffrent displays? @media ???
+// hide_open button
+
+const hide_open = document.getElementById("hide_open");
+let galleryOpen = true;
+
+hide_open.addEventListener("click", function () {
+  if (galleryOpen) {
+    galleryContainer.style.display = "none";
+  } else {
+    galleryContainer.style.display = "flex";
+  }
+  galleryOpen = !galleryOpen;
+});
 
 // fetch pictures from unsplash using API
 
@@ -129,3 +146,4 @@ document.addEventListener("keydown", function (event) {
     circleLeft();
   }
 });
+
