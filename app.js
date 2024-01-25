@@ -7,7 +7,8 @@ let currentIndex = 0;
 
 // display top gallery
 
-function showTopGallery() {   // TODO: insert gallery on page
+function showTopGallery() {
+  // TODO: insert gallery on page
 }
 
 // fetch pictures from unsplash using API
@@ -68,47 +69,49 @@ form.addEventListener("submit", function (event) {
   search(query);
 });
 
-// next and previous button, mouse click
-// works in circle
+// variables and functions for next / previous button
 
 const buttonNext = document.getElementById("next");
 const buttonPrevious = document.getElementById("previous");
 
-buttonNext.addEventListener("click", function () {
-  currentIndex++;
-  if (currentIndex >= gallery.length) {
-    currentIndex -= gallery.length;
-  }
-  showImage(currentIndex);
-});
-
-buttonPrevious.addEventListener("click", function () {
+function circleLeft() {
   currentIndex--;
   if (currentIndex < 0) {
     currentIndex += gallery.length;
   }
   showImage(currentIndex);
+}
+
+function circleRight() {
+  currentIndex++;
+  if (currentIndex >= gallery.length) {
+    currentIndex -= gallery.length;
+  }
+  showImage(currentIndex);
+}
+
+// next and previous button, mouse click
+
+buttonNext.addEventListener("click", function () {
+  circleRight();
 });
 
-// next and previous button, for the left arrow key
-// works in circle
+buttonPrevious.addEventListener("click", function () {
+  circleLeft();
+});
+
+// next and previous button, for left and right arrow key
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "ArrowRight") {
-    currentIndex++;
-    if (currentIndex >= gallery.length) {
-      currentIndex -= gallery.length;
-    }
-    showImage(currentIndex);
+    circleLeft();
   }
 });
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "ArrowLeft") {
-    currentIndex--;
-    if (currentIndex < 0) {
-      currentIndex += gallery.length;
-    }
-    showImage(currentIndex);
+    circleLeft();
   }
 });
+
+
