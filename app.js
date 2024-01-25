@@ -1,15 +1,23 @@
 // variables
 
-const imageContainer = document.getElementById("img_container");
+let imageContainer = document.getElementById("img_container");
+let galleryContainer = document.getElementById('gallery_container')
 
 let gallery = [];
 let currentIndex = 0;
 
 // display top gallery
 
+
 function showTopGallery() {
   // TODO: insert gallery on page
 }
+
+
+
+
+
+
 
 // fetch pictures from unsplash using API
 
@@ -20,20 +28,21 @@ async function search(queryParam) {
   let data = await response.json();
 
   if (data.results.length > 0) {
-    gallery = data.results.slice(0, 10);
+    gallery = data.results
     showImage(currentIndex);
   }
 }
 
 // random image for loading page
+// bunch of keywords so the first image is generated randomly from an array
 
 document.addEventListener("DOMContentLoaded", function () {
-  const randomQuery = generateRandomQuery();
-  search(randomQuery);
-  showTopGallery(randomQuery);
+  const randomImg = randomImage();
+  search(randomImg);
+  showTopGallery(randomImg);
 });
 
-function generateRandomQuery() {
+function randomImage() {
   const keywords = [
     "china",
     "new york",
@@ -50,11 +59,12 @@ function generateRandomQuery() {
   return keywords[randomIndex];
 }
 
-// display main image
+// display main image with regular size to improve loading speed (can change to raw to get better quality pictures)
+// fetched alt_description from json
 
 function showImage(index) {
-  const imageUrl = gallery[index].urls.regular; // regular image size
-  const altText = gallery[index].alt_description; // image description
+  const imageUrl = gallery[index].urls.regular;
+  const altText = gallery[index].alt_description;
 
   imageContainer.innerHTML = `<img src="${imageUrl}" alt="${altText}">`;
 }
@@ -70,6 +80,7 @@ form.addEventListener("submit", function (event) {
 });
 
 // variables and functions for next / previous button
+// works in circle - if it goes to the last image it starts from the begining 
 
 const buttonNext = document.getElementById("next");
 const buttonPrevious = document.getElementById("previous");

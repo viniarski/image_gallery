@@ -15,23 +15,31 @@
 
       <!-- top images slider -->
       <div class="div2">
+        <div id="gallery_container" class="gallery_container"></div>
 
-        <div class="gallery_container"></div> <!-- TODO: insert gallery here -->
-
-        <button id="img_slider" class="nav_button img_slider"> <!-- TODO: event for button to hidde / open gallery -->
+        <button id="img_slider" class="nav_button img_slider">
+          <!-- TODO: event for button to hidde / open gallery -->
           <img src="./media/dots.png" alt="open and close images slider" />
         </button>
       </div>
 
       <!-- next / previous buttons -->
       <div class="div3">
-        <button id="previous" class="nav_button previous">
+        <button
+          id="previous"
+          class="nav_button previous"
+          aria-label="Previous image"
+        >
           <img src="./media/previous.png" alt="previus button" />
         </button>
       </div>
 
       <div class="div4">
-        <button id="next" class="nav_button next">
+        <button
+          id="next"
+          class="nav_button next"
+          aria-label="Next image"
+        >
           <img src="./media/next.png" alt="next button" />
         </button>
       </div>
@@ -44,8 +52,9 @@
             placeholder="search for images"
             id="input"
             name="input"
+            aria-label="Search for images"
           />
-          <button type="submit" class="submit">search</button>
+          <button type="submit" class="submit" aria-label="Search button">search</button>
         </form>
       </div>
     </div>
