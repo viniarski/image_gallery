@@ -6,6 +6,16 @@ let galleryContainer = document.getElementById("gallery_container");
 let gallery = [];
 let currentIndex = 0;
 
+// display main image with regular size to improve loading speed (can change to raw to get better quality pictures)
+// fetched alt_description from json
+
+function showImage(index) {
+  const imageUrl = gallery[index].urls.regular;
+  const altText = gallery[index].alt_description;
+
+  imageContainer.innerHTML = `<img src="${imageUrl}" alt="${altText}">`;
+}
+
 // display top gallery and change picture when clicked
 
 const createGallery = (gallery) => {
@@ -54,18 +64,30 @@ async function search(queryParam) {
   }
 }
 
+// search form
+
+const form = document.getElementById("form");
+
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  let query = event.target.input.value;
+  search(query);
+});
+
 // random image for loading page
 // bunch of keywords so the first image is generated randomly from an array
 
-const randomImg = randomImage();
-
 document.addEventListener("DOMContentLoaded", function () {
+  const randomImg = randomImage();
   search(randomImg);
 });
 
 function randomImage() {
   const keywords = [
-    "china",
+    "cracow",
+    "poland",
+    "warsaw",
+    "norwich",
     "new york",
     "space",
     "forest",
@@ -75,31 +97,14 @@ function randomImage() {
     "lakes",
     "architecture",
     "animals",
+    "dolphin",
+    "paris",
+    "london",
+    "china",
   ];
   const randomIndex = Math.floor(Math.random() * keywords.length);
   return keywords[randomIndex];
 }
-
-// display main image with regular size to improve loading speed (can change to raw to get better quality pictures)
-// fetched alt_description from json
-
-function showImage(index) {
-  const imageUrl = gallery[index].urls.regular;
-  const altText = gallery[index].alt_description;
-
-  imageContainer.innerHTML = `<img src="${imageUrl}" alt="${altText}">`;
-}
-
-// search form
-
-const form = document.getElementById("form");
-
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-  let query = event.target.input.value;
-  search(query);
-  galleryContainer.innerHTML = ''
-});
 
 // variables and functions for next / previous button
 // works in circle - if it goes to the last image it starts from the begining

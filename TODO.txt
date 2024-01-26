@@ -1,2 +1,0 @@
-
-TODO: FIX BUG - if search form is empty and click search top gollery is missing
