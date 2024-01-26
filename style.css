@@ -76,6 +76,10 @@ body {
   margin: 2px;
 }
 
+.div2 img:hover {
+  transform: scale(1.3);
+}
+
 /* main picture */
 
 #img_container {
@@ -118,6 +122,10 @@ body {
 
 .hide_open img {
   border-radius: 16px;
+}
+
+.hide_open img:hover {
+  transform: none;
 }
 
 .hide_open img,
