@@ -60,12 +60,14 @@ body {
   position: absolute;
   justify-content: center;
   align-items: center;
+  align-content: center;
   height: 80px;
   width: auto;
   background-color: rgba(0, 0, 0, 0.411);
   top: 40px;
   padding-left: 2px;
   padding-right: 2px;
+  cursor: pointer;
 }
 
 .gallery_container img {
@@ -170,9 +172,41 @@ input::placeholder {
   border: 0;
 }
 
-@media only screen and (max-width: 600px) {
-  .div5 {
-    margin-bottom: 30px;
+@media (max-width: 1130px) {
+
+  .gallery_container {
+    flex-direction: column; 
+  }
+
+  .gallery_container img {
+    height: 36px;
+    margin: 1.5px;
+    width: 19%;
+  }
+
+  .hide_open {
+    display: flex;
+    position: relative;
   }
 }
 
+@media (max-width: 600px) {
+
+  .gallery_container {
+    top: 30px;
+    flex-direction: column; 
+    height: 64px;
+    
+  }
+
+  .gallery_container img {
+    height: 28px;
+    margin: 1px;
+  }
+
+  .hide_open {
+    display: flex;
+    position: relative;
+    margin-top: 100px;
+  }
+}

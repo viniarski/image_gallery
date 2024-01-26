@@ -67,7 +67,7 @@ function randomImage() {
   const keywords = [
     "china",
     "new york",
-    "portugal",
+    "space",
     "forest",
     "landscape",
     "mountains",
