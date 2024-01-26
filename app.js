@@ -142,7 +142,7 @@ buttonPrevious.addEventListener("click", function () {
 
 document.addEventListener("keydown", function (event) {
   if (event.key === "ArrowRight") {
-    circleLeft();
+    circleRight();
   }
 });
 
