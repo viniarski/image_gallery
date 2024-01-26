@@ -72,6 +72,8 @@ form.addEventListener("submit", function (event) {
   event.preventDefault();
   let query = event.target.input.value;
   search(query);
+
+  form.reset()
 });
 
 // random image for loading page
