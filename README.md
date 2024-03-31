@@ -1,2 +1,4 @@
 # image_gallery
-end_of_the_week_3_project
+
+Project at the end of week 3
+Tech Educators Bootcamp 2024
